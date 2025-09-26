@@ -1,3 +1,5 @@
+// Data
+
 const questions = [
    {
     question: 'Which is the largest animal in the world?',
@@ -100,6 +102,8 @@ const questions = [
    }
 ];
 
+// Global Elements
+
 const questionElement = document.getElementById('question');
 
 const answerButtons = document.getElementById('answer-buttons');
@@ -110,12 +114,16 @@ let currentQuestionIndex = 0;
 
 let score = 0;
 
+// Function for starting of Quiz
+
 function startQuiz() {
      currentQuestionIndex = 0;
      score = 0;
      nextButton.innerHTML = 'Next';
      showQuestion();
 };
+
+// Function for showing of Question
 
 function showQuestion() {
      resetState();
@@ -137,6 +145,7 @@ currentQuestion.answers.forEach(answer => {
     });
 };
 
+// Function for reset of Quiz
 
 function resetState() {
      nextButton.style.display = 'none';
@@ -144,6 +153,8 @@ function resetState() {
           answerButtons.removeChild(answerButtons.firstChild);
      };
 };
+
+// Function for select of answers
 
 function selectAnswer(e) {
      const selectedBtn = e.target;
@@ -168,12 +179,16 @@ nextButton.style.display = 'block';
 };
 
 
+// Function for show of score
+
  function showScore() {
 resetState();
 questionElement.innerHTML =  `You scored ${score} out of ${questions.length}!`;
 nextButton.innerHTML = 'Play Again';
 nextButton.style.display = 'block';
  };
+
+// Function for handling of next button
 
 function handleNextButton() {
 currentQuestionIndex++;
@@ -184,6 +199,8 @@ showScore();
 };
 };
 
+// Adding Event Listener of click to next-button
+
 nextButton.addEventListener('click', ()=> {
      if(currentQuestionIndex < questions.length) {
 handleNextButton();
@@ -191,5 +208,7 @@ handleNextButton();
 startQuiz();
      };
 });
+
+// Calling the function for starting of the quiz
 
 startQuiz();
